@@ -3,7 +3,6 @@ from speedruncompy.endpoints import GetGameRecordHistory
 from time import sleep
 from datetime import datetime
 from sys import exit
-import os
 
 # Gets the Username and Password for the mediawiki account
 with open("hiddenVars.txt", "r") as f:
@@ -14,7 +13,7 @@ with open("hiddenVars.txt", "r") as f:
 SRC_API = "https://www.speedrun.com/api/v1/"
 
 # Will delete after getting all categories from sr.c is done
-GAMES = {"karlson_itch_io":{"GAME":"Karlson_(Itch.io)", "GAME_ID":"m1zjg926", "FULL_CATS":{"wk6n5xx2":"Any%", "7kj3ejx2":"All_Enemies", "jdrv5jx2":"Gunless"}, "IL_CATS":{"z27rq8gd":"Any%", "zdn0jeq2":"All_Enemies", "xk9royyk":"Gunless"}, "LEVELS":{"xd03lrmd":"Tutorial", "rw6erppd":"Sandbox_0", "n93yn22d":"Sandbox_1", "z98gz2rw":"Sandbox_2", "rdn2lk5d":"Escape_0", "ldy854pw":"Escape_1", "gdr18kew":"Escape_2", "nwlpyko9":"Escape_3", "ywemjzld":"Sky_0", "69znqmx9":"Sky_1", "r9g1jkj9":"Sky_2"}}}
+GAMES = [{"GAME":"Karlson_(Itch.io)", "GAME_ID":"m1zjg926", "FULL_CATS":{"wk6n5xx2":"Any%", "7kj3ejx2":"All_Enemies", "jdrv5jx2":"Gunless"}, "IL_CATS":{"z27rq8gd":"Any%", "zdn0jeq2":"All_Enemies", "xk9royyk":"Gunless"}, "LEVELS":{"xd03lrmd":"Tutorial", "rw6erppd":"Sandbox_0", "n93yn22d":"Sandbox_1", "z98gz2rw":"Sandbox_2", "rdn2lk5d":"Escape_0", "ldy854pw":"Escape_1", "gdr18kew":"Escape_2", "nwlpyko9":"Escape_3", "ywemjzld":"Sky_0", "69znqmx9":"Sky_1", "r9g1jkj9":"Sky_2"}}]
 
 # The requests session, used for cookies I think
 WIKISESH = rq.Session()
@@ -136,10 +135,10 @@ def main(token, game):
 
 if __name__ == "__main__":
     token = getToken()
-    for game in GAMES.values(): # Updates all world record pages at the start of running
+    for game in GAMES: # Updates all world record pages at the start of running
         print(game)
         editAllHist(token, game)
     while True:
-        for game in GAMES.values(): # Will be useful for wikis spanning multiple games
+        for game in GAMES: # Will be useful for wikis spanning multiple games
             main(token, game)
         pause()
