@@ -9,9 +9,9 @@ import os
 with open("hiddenVars.txt", "r") as f:
     USERNAME = f.readline().rstrip()
     PASSWORD = f.readline().rstrip()
+    WIKI = f.readline().rstrip()
 
 SRC_API = "https://www.speedrun.com/api/v1/"
-WIKI = "https://karlson.wiki/w/api.php" # Move to hiddenVars.txt
 
 # Will delete after getting all categories from sr.c is done
 GAMES = {"karlson_itch_io":{"GAME":"Karlson_(Itch.io)", "GAME_ID":"m1zjg926", "FULL_CATS":{"wk6n5xx2":"Any%", "7kj3ejx2":"All_Enemies", "jdrv5jx2":"Gunless"}, "IL_CATS":{"z27rq8gd":"Any%", "zdn0jeq2":"All_Enemies", "xk9royyk":"Gunless"}, "LEVELS":{"xd03lrmd":"Tutorial", "rw6erppd":"Sandbox_0", "n93yn22d":"Sandbox_1", "z98gz2rw":"Sandbox_2", "rdn2lk5d":"Escape_0", "ldy854pw":"Escape_1", "gdr18kew":"Escape_2", "nwlpyko9":"Escape_3", "ywemjzld":"Sky_0", "69znqmx9":"Sky_1", "r9g1jkj9":"Sky_2"}}}
